@@ -27,6 +27,11 @@ export default function VoteStep2() {
       {/* content */}
       <div>
         <CandidateGrid list={getCandidates()} />
+        <div className="flex justify-center">
+          <button className="text-caption-01 bg-grayscale-03 mt-4 h-11.5 w-38.5 cursor-pointer rounded-[100px] border-2">
+            제출하기
+          </button>
+        </div>
       </div>
     </>
   );
