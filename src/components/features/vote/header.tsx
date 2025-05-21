@@ -13,7 +13,7 @@ export default function Header() {
         return 0;
       case 'front':
       case 'back':
-      case 'demo':
+      case 'team':
       case 'loading':
         return 1;
       case 'result':

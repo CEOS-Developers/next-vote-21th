@@ -13,12 +13,12 @@ export default function CandidateCard({ name }: { name: string }) {
   const isSelected =
     (cast === 'front' && selectedFrontend === name) ||
     (cast === 'back' && selectedBackend === name) ||
-    (cast === 'demo' && selectedTeam === name);
+    (cast === 'team' && selectedTeam === name);
 
   const handleClick = () => {
     if (cast === 'front') selectFrontend(name);
     else if (cast === 'back') selectBackend(name);
-    else if (cast === 'demo') selectTeam(name);
+    else if (cast === 'team') selectTeam(name);
   };
 
   return (
