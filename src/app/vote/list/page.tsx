@@ -9,8 +9,8 @@ export default function VoteList() {
       </div>
       {/* content */}
       <div>
-        <SelectVoteButton text="파트장 투표" href="/vote/part" type="파트장 투표" />
-        <SelectVoteButton text="데모데이 투표" href="/vote/part" type="데모데이 투표" />
+        <SelectVoteButton text="파트장 투표" href="/vote/part/list" type="파트장 투표" />
+        <SelectVoteButton text="데모데이 투표" href="/vote/demo/list" type="데모데이 투표" />
       </div>
     </>
   );
