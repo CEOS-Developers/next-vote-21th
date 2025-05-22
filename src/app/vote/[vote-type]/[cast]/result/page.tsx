@@ -22,9 +22,17 @@ export default function VoteStep3() {
     return TEAMS;
   };
 
+  // 임시 득표수 설정 함수 (추후 backend API로 변경경)
+  const getCandidatesWithVotes = () => {
+    return getCandidates().map((name, index) => ({
+      name,
+      votes: 10 - index, // 임시 득표수: 앞사람이 더 많이 받음
+    }));
+  };
+
   const onSubmit = () => {
     // 첫 화면으로 이동
-    router.push(`/vote/${params['vote-type']}/${type}/aggregate`);
+    router.push(`/`);
   };
 
   return (
@@ -35,7 +43,7 @@ export default function VoteStep3() {
       </div>
       {/* content */}
       <div>
-        <ResultGrid list={getCandidates()} />
+        <ResultGrid list={getCandidatesWithVotes()} />
         <div className="flex justify-center">
           <button
             onClick={onSubmit}
