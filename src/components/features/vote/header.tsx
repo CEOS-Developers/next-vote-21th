@@ -14,6 +14,7 @@ export default function Header() {
       case 'front':
       case 'back':
       case 'team':
+      case 'aggregate':
       case 'loading':
         return 1;
       case 'result':
