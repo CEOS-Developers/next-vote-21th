@@ -11,7 +11,9 @@ export default function Header() {
     switch (current) {
       case 'list':
         return 0;
-      case 'cast':
+      case 'front':
+      case 'back':
+      case 'team':
       case 'loading':
         return 1;
       case 'result':
