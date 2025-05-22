@@ -7,15 +7,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [title, content] = React.Children.toArray(children);
-
   return (
     <>
       <div className="flex h-full flex-col px-5">
         <Header />
-        {title}
         <hr className="bg-grayscale-00-black absolute inset-x-5 top-1/4 h-1" />
-        {content}
+        {children}
       </div>
       <Indicator />
     </>
