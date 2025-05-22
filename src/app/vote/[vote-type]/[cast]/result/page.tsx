@@ -47,7 +47,7 @@ export default function VoteStep3() {
         <div className="flex justify-center">
           <button
             onClick={onSubmit}
-            className="text-caption-01 bg-grayscale-03 mt-4 h-11.5 w-38.5 cursor-pointer rounded-[100px] border-2"
+            className="hover:bg-neutral-01 text-caption-01 bg-grayscale-03 mt-4 h-11.5 w-38.5 cursor-pointer rounded-[100px] border-2"
           >
             돌아가기
           </button>
