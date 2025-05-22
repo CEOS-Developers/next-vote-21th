@@ -19,6 +19,13 @@ export default function VoteStep2() {
     return TEAMS;
   };
 
+  const getTitle = () => {
+    if (type === 'front') return 'FE 파트장 투표';
+    if (type === 'back') return 'BE 파트장 투표';
+    if (type === 'team') return '데모데이 투표';
+    return '';
+  };
+
   const { selectedFrontend, selectedBackend, selectedTeam } = useVoteStore();
 
   const onSubmit = () => {
@@ -45,7 +52,7 @@ export default function VoteStep2() {
       {/* title */}
       <div className="mt-8 mb-15 flex items-center px-8">
         <Back />
-        <h1 className="text-headline-03 text-grayscale-00-black mx-auto">{type}</h1>
+        <h1 className="text-headline-03 text-grayscale-00-black mx-auto">{getTitle()}</h1>
       </div>
       {/* content */}
       <div>
