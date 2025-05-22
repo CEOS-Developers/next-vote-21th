@@ -16,7 +16,9 @@ export default function VoteStep1() {
       {/* title */}
       <div className="mt-8 mb-15 flex items-center px-8">
         <Back />
-        <h1 className="text-headline-03 text-grayscale-00-black mx-auto">파트장 투표</h1>
+        <h1 className="text-headline-03 text-grayscale-00-black mx-auto">
+          {type === 'part' ? '파트장 투표' : '데모데이 투표'}
+        </h1>
       </div>
       {/* content */}
       {type === 'part' ? (
