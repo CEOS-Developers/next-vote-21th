@@ -26,7 +26,7 @@ export default function SelectVoteButton({ text, href, type }: ButtonProps) {
       onClick={handleClick}
     >
       <p className="text-headline-04 text-grayscale-00-black group-hover:text-grayscale-00-black ml-10">{text}</p>
-      <button className="bg-grayscale-03 hover:bg-neutral-01 mr-10 h-10 w-10 rounded-full border-2 transition-colors">
+      <button className="bg-grayscale-03 group-hover:bg-neutral-01 mr-10 h-10 w-10 rounded-full border-2 transition-colors">
         <span className="text-xl font-bold text-gray-700 opacity-0 transition-opacity group-hover:opacity-100">✓</span>
       </button>
     </div>

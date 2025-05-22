@@ -26,10 +26,12 @@ export default function GoToVoteButton({ text1, text2, href }: ButtonProps) {
       <div className="mr-6 mb-8 grid items-center justify-items-center gap-4 self-end">
         <button
           onClick={() => router.push(href)}
-          className="bg-grayscale-03 hover:bg-neutral-01 flex h-10 w-10 items-center justify-center rounded-full border-2 transition-colors"
+          className="group bg-grayscale-03 hover:bg-neutral-01 flex h-10 w-10 items-center justify-center rounded-full border-2 transition-colors"
         >
           {/* 체크표시: 그룹에 hover되면 등장 */}
-          <span className="text-xl font-bold text-gray-700 opacity-0 transition-opacity hover:opacity-100">✓</span>
+          <span className="text-xl font-bold text-gray-700 opacity-0 transition-opacity group-hover:opacity-100">
+            ✓
+          </span>
         </button>
         <button
           onClick={onResultClick}
