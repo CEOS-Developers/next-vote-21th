@@ -36,8 +36,8 @@ export default function VoteStep2() {
     // TODO: 나중에 이곳에서 API 요청
     // await fetch('/api/vote', { method: 'POST', body: JSON.stringify({ voteType, selected }) });
 
-    // 결과 페이지로 이동
-    router.push(`/vote/${params['vote-type']}/aggregate`);
+    // 투표 애니메이션 페이지로 이동
+    router.push(`/vote/${params['vote-type']}/${type}/aggregate`);
   };
 
   return (
