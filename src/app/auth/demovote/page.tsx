@@ -1,22 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-
 import Header from "../_components/Header";
 import SubmitButton from "@/components/SubmitButton";
 
 const Vote = () => {
   const candidates = [
-    { name: "김서연", affiliation: "프로메사" },
-    { name: "신수진", affiliation: "하니홈" },
-    { name: "김영서", affiliation: "이어드림" },
-    { name: "원채영", affiliation: "하니홈" },
-    { name: "김철홍", affiliation: "팝업사이클" },
-    { name: "이주희", affiliation: "이어드림" },
-    { name: "권동욱", affiliation: "프로메사" },
-    { name: "최서연", affiliation: "인플루이" },
-    { name: "송아영", affiliation: "팝업사이클" },
-    { name: "한서정", affiliation: "인플루이" },
+    "이어드림",
+    "인플루이",
+    "팝업사이클",
+    "프로메사",
+    "하니홈",
   ];
 
   const [selected, setSelected] = useState<string | null>(null);
@@ -27,41 +21,28 @@ const Vote = () => {
 
   return (
     <div className="flex h-full flex-col text-black">
-      <Header>프론트엔드 파트장 투표</Header>
+      <Header>데모데이 투표</Header>
 
       <div className="m-[16px] box-border rounded-full bg-white px-6 py-2 text-center text-[12px] font-semibold text-[#00AF8F] shadow-sm">
-        CEOS 22기 프론트엔드 파트장 1명을 투표해주세요.
+        CEOS 21기 데모데이 최고의 1팀을 투표해주세요.
       </div>
 
       <form className="flex flex-1 flex-col justify-between">
-        <div className="grid grid-cols-2 gap-4 p-4">
-          {candidates.map((c) => {
-            const isActive = selected === c.name;
+        <div className="grid grid-cols-1 gap-4 p-4">
+          {candidates.map((name) => {
+            const isActive = selected === name;
             return (
               <button
                 type="button"
-                key={c.name}
-                onClick={() => handleSelect(c.name)}
-                className={`group flex h-[66px] flex-row items-center gap-2 rounded-[4px] p-4 shadow transition duration-200 ease-in-out ${isActive ? "scale-[1.01] bg-[#00AF8F] text-white shadow-lg" : "bg-white text-black hover:scale-[1.01] hover:bg-[#00AF8F] hover:text-white hover:shadow-lg"}`}
+                key={name}
+                onClick={() => handleSelect(name)}
+                className={`h-[56px] rounded-[6px] p-4 text-center text-sm font-semibold shadow-sm transition duration-200 ease-in-out ${
+                  isActive
+                    ? "bg-[#00AF8F] text-white shadow-md"
+                    : "bg-white text-black hover:bg-[#00AF8F] hover:text-white hover:shadow-md"
+                }`}
               >
-                <div
-                  className={`font-semibold ${
-                    isActive
-                      ? "text-white"
-                      : "text-black group-hover:text-white"
-                  }`}
-                >
-                  {c.name}
-                </div>
-                <div
-                  className={`text-sm ${
-                    isActive
-                      ? "text-white"
-                      : "text-gray-500 group-hover:text-white"
-                  }`}
-                >
-                  {c.affiliation}
-                </div>
+                {name}
               </button>
             );
           })}
