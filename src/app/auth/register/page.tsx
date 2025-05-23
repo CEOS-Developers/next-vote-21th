@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from "../_components/Header";
 import InputField from "../_components/InputField";
@@ -8,6 +8,7 @@ import InputFieldWithFeedback from "../_components/InputFieldWithFeedback";
 import SubmitButton from "@/components/SubmitButton";
 import Link from "next/link";
 import { PATH } from "@/constants/path";
+import { TEAM } from "@/constants/team";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -15,21 +16,45 @@ const Register = () => {
     password: "",
     email: "",
     team: "",
-    role: "",
+    part: "",
     name: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [teamMember, setTeamMember] = useState<string[]>([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const targetName = e.target.name;
+    const targetValue = e.target.value;
+    if (targetName === "part/name") {
+      const [part, name] = targetValue.split("/");
+      setUser((prev) => ({ ...prev, part: part, name: name }));
+    } else {
+      setUser((prev) => ({ ...prev, [targetName]: targetValue }));
+    }
   };
 
   const isEmailFormatValid = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
-
   const isValidEmail = isEmailFormatValid(user.email);
+
+  useEffect(() => {
+    //team이 정해지면
+    const team = TEAM.find((team_) => team_?.name === user.team);
+    if (!user.team || !team) return;
+
+    const teamMem = [
+      ...team.front.map((name) => `프론트/${name}`),
+      ...team.back.map((name) => `백엔드/${name}`),
+    ];
+
+    setTeamMember(teamMem);
+  }, [user.team]);
 
   return (
     <div className="flex flex-col">
@@ -42,7 +67,6 @@ const Register = () => {
           value={user.id}
           onChange={handleChange}
         />
-
         <InputField
           label="비밀번호"
           type="password"
@@ -51,7 +75,6 @@ const Register = () => {
           value={user.password}
           onChange={handleChange}
         />
-
         <InputFieldWithFeedback
           label="비밀번호 확인"
           type="password"
@@ -68,7 +91,6 @@ const Register = () => {
               : ""
           }
         />
-
         <InputFieldWithFeedback
           label="이메일"
           type="email"
@@ -86,6 +108,43 @@ const Register = () => {
           }
         />
       </form>
+
+      <div className="flex">
+        <div className="p-4">
+          <div className="font-caption-1 text-gray600">팀</div>
+          <select
+            name="team"
+            value={user.team}
+            onChange={handleChange}
+            className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
+          >
+            <option value="">팀 선택</option>
+            {TEAM.map((team) => (
+              <option key={team?.name} value={team?.name}>
+                {team?.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex-1 p-4">
+          <div className="font-caption-1 text-gray600">파트/이름</div>
+          <select
+            name="part/name"
+            value={`${user.part}/${user.name}`}
+            onChange={handleChange}
+            className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
+          >
+            <option>팀원 선택</option>
+            {user.team &&
+              teamMember.map((member) => (
+                <option key={member} value={member}>
+                  {member}
+                </option>
+              ))}
+          </select>
+        </div>
+      </div>
 
       <Link href={PATH.LOGIN} className="self-end px-4">
         <span className="text-gray600">이미 계정이 있으신가요? </span>
