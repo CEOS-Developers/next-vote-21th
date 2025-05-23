@@ -13,7 +13,7 @@ export default function Home() {
         </header>
       </Link>
 
-      <div className="max-w-3xl self-center">
+      <div className="w-full max-w-3xl self-center">
         <Lottie />
       </div>
 
