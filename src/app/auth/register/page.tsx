@@ -57,101 +57,105 @@ const Register = () => {
   }, [user.team]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex h-full flex-col">
       <Header>회원가입</Header>
-      <form>
-        <InputField
-          label="아이디"
-          name="id"
-          placeholder="아이디를 입력해주세요"
-          value={user.id}
-          onChange={handleChange}
-        />
-        <InputField
-          label="비밀번호"
-          type="password"
-          name="password"
-          placeholder="비밀번호를 입력해주세요"
-          value={user.password}
-          onChange={handleChange}
-        />
-        <InputFieldWithFeedback
-          label="비밀번호 확인"
-          type="password"
-          name="password"
-          placeholder="비밀번호를 다시 입력해주세요"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          isValid={confirmPassword === user.password}
-          message={
-            confirmPassword
-              ? confirmPassword === user.password
-                ? "비밀번호가 일치합니다."
-                : "비밀번호가 일치하지 않습니다."
-              : ""
-          }
-        />
-        <InputFieldWithFeedback
-          label="이메일"
-          type="email"
-          name="email"
-          placeholder="이메일을 입력해주세요."
-          value={user.email}
-          onChange={handleChange}
-          isValid={isValidEmail}
-          message={
-            user.email
-              ? isValidEmail
-                ? " "
-                : "이메일 형식이 올바르지 않습니다."
-              : " "
-          }
-        />
+      <form className="flex flex-1 flex-col justify-between">
+        <div>
+          <InputField
+            label="아이디"
+            name="id"
+            placeholder="아이디를 입력해주세요"
+            value={user.id}
+            onChange={handleChange}
+          />
+          <InputField
+            label="비밀번호"
+            type="password"
+            name="password"
+            placeholder="비밀번호를 입력해주세요"
+            value={user.password}
+            onChange={handleChange}
+          />
+          <InputFieldWithFeedback
+            label="비밀번호 확인"
+            type="password"
+            name="password"
+            placeholder="비밀번호를 다시 입력해주세요"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            isValid={confirmPassword === user.password}
+            message={
+              confirmPassword
+                ? confirmPassword === user.password
+                  ? "비밀번호가 일치합니다."
+                  : "비밀번호가 일치하지 않습니다."
+                : ""
+            }
+          />
+          <InputFieldWithFeedback
+            label="이메일"
+            type="email"
+            name="email"
+            placeholder="이메일을 입력해주세요."
+            value={user.email}
+            onChange={handleChange}
+            isValid={isValidEmail}
+            message={
+              user.email
+                ? isValidEmail
+                  ? " "
+                  : "이메일 형식이 올바르지 않습니다."
+                : " "
+            }
+          />
+
+          <div className="flex">
+            <div className="p-4">
+              <div className="font-caption-1 text-gray600">팀</div>
+              <select
+                name="team"
+                value={user.team}
+                onChange={handleChange}
+                className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
+              >
+                <option value="">팀 선택</option>
+                {TEAM.map((team) => (
+                  <option key={team?.name} value={team?.name}>
+                    {team?.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex-1 p-4">
+              <div className="font-caption-1 text-gray600">파트/이름</div>
+              <select
+                name="part/name"
+                value={`${user.part}/${user.name}`}
+                onChange={handleChange}
+                className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
+              >
+                <option>팀원 선택</option>
+                {user.team &&
+                  teamMember.map((member) => (
+                    <option key={member} value={member}>
+                      {member}
+                    </option>
+                  ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          <Link href={PATH.LOGIN} className="self-end px-4">
+            <span className="text-gray600">이미 계정이 있으신가요? </span>
+            <span className="text-main">로그인 하러가기</span>
+          </Link>
+
+          <SubmitButton isActive={false}>가입하기</SubmitButton>
+        </div>
       </form>
-
-      <div className="flex">
-        <div className="p-4">
-          <div className="font-caption-1 text-gray600">팀</div>
-          <select
-            name="team"
-            value={user.team}
-            onChange={handleChange}
-            className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
-          >
-            <option value="">팀 선택</option>
-            {TEAM.map((team) => (
-              <option key={team?.name} value={team?.name}>
-                {team?.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="flex-1 p-4">
-          <div className="font-caption-1 text-gray600">파트/이름</div>
-          <select
-            name="part/name"
-            value={`${user.part}/${user.name}`}
-            onChange={handleChange}
-            className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
-          >
-            <option>팀원 선택</option>
-            {user.team &&
-              teamMember.map((member) => (
-                <option key={member} value={member}>
-                  {member}
-                </option>
-              ))}
-          </select>
-        </div>
-      </div>
-
-      <Link href={PATH.LOGIN} className="self-end px-4">
-        <span className="text-gray600">이미 계정이 있으신가요? </span>
-        <span className="text-main">로그인 하러가기</span>
-      </Link>
-
-      <SubmitButton isActive={false}>가입하기</SubmitButton>
     </div>
   );
 };
