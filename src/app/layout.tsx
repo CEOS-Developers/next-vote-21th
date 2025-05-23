@@ -24,13 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const layout =
-    "text-gray900 mx-auto h-screen w-screen max-w-[375px] shadow-[0_0_8px_#9aa6b230]";
+    "text-gray900 mx-auto h-screen w-screen shadow-[0_0_8px_#9aa6b230]";
   return (
     <html lang="en">
       <body
         className={`${layout} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="h-full overflow-hidden bg-[#F6F8FA]">{children}</div>
+        <div className="h-full overflow-auto bg-[#F6F8FA]">{children}</div>
       </body>
     </html>
   );
