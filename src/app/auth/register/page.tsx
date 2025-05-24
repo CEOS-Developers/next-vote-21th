@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import Header from "../_components/Header";
-import InputField from "../_components/InputField";
 import InputFieldWithFeedback from "../_components/InputFieldWithFeedback";
 import SubmitButton from "@/components/SubmitButton";
 
@@ -13,8 +12,14 @@ import { PATH } from "@/constants/path";
 import { MemberData, TEAM } from "@/constants/team";
 import { PartLabel, TeamLabel } from "@/constants/team.label";
 import { User } from "@/constants/user";
+import {
+  validateLoginId,
+  validateEmail,
+  validatePassword,
+} from "@/utils/validators";
 
 const Register = () => {
+  const { mutate: signup, isPending } = useSignup();
   const [user, setUser] = useState({
     loginId: "",
     password: "",
@@ -37,15 +42,16 @@ const Register = () => {
       const [part, name] = targetValue.split("/");
       setUser((prev) => ({ ...prev, part: part, username: name }));
     } else {
-      setUser((prev) => ({ ...prev, [targetName]: targetValue }));
+      setUser((prev) => ({
+        ...prev,
+        [targetName]: targetValue,
+      }));
     }
   };
 
-  const isEmailFormatValid = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
-  const isValidEmail = isEmailFormatValid(user.email);
+  const [isValidId, idMsg] = validateLoginId(user.loginId);
+  const [isValidPassword, passwordMsg] = validatePassword(user.password);
+  const [isValidEmail, emailMsg] = validateEmail(user.email);
 
   useEffect(() => {
     //team이 정해지면
@@ -54,8 +60,6 @@ const Register = () => {
 
     setTeamMember(team.members);
   }, [user.team]);
-
-  const { mutate: signup, isPending } = useSignup();
 
   const submitSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -93,20 +97,24 @@ const Register = () => {
         className="flex flex-1 flex-col justify-between md:min-w-3xl md:self-center"
       >
         <div>
-          <InputField
+          <InputFieldWithFeedback
             label="아이디"
             name="loginId"
             placeholder="아이디를 입력해주세요"
             value={user.loginId}
             onChange={handleChange}
+            isValid={isValidId}
+            message={user.loginId ? idMsg : " "}
           />
-          <InputField
+          <InputFieldWithFeedback
             label="비밀번호"
             type="password"
             name="password"
             placeholder="비밀번호를 입력해주세요"
             value={user.password}
             onChange={handleChange}
+            isValid={isValidPassword}
+            message={user.password ? passwordMsg : " "}
           />
           <InputFieldWithFeedback
             label="비밀번호 확인"
@@ -132,13 +140,7 @@ const Register = () => {
             value={user.email}
             onChange={handleChange}
             isValid={isValidEmail}
-            message={
-              user.email
-                ? isValidEmail
-                  ? " "
-                  : "이메일 형식이 올바르지 않습니다."
-                : " "
-            }
+            message={user.email ? emailMsg : " "}
           />
 
           <div className="flex">
@@ -194,6 +196,8 @@ const Register = () => {
               !!user.password &&
               !!confirmPassword &&
               user.password === confirmPassword &&
+              isValidId &&
+              isValidPassword &&
               isValidEmail &&
               !!user.team &&
               !!user.part &&
