@@ -1,6 +1,6 @@
-import AccountPrompt from '@/components/common/auth/AccountPrompt';
-import CustomInput from '@/components/common/auth/CustomInput';
-import SubmitButton from '@/components/common/auth/SubmitButton';
+import AccountPrompt from '@/components/features/auth/AccountPrompt';
+import CustomInput from '@/components/features/auth/CustomInput';
+import SubmitButton from '@/components/common/SubmitButton';
 
 export default function LoginPage() {
   return (

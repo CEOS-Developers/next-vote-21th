@@ -1,7 +1,7 @@
-import AccountPrompt from '@/components/common/auth/AccountPrompt';
-import CustomInput from '@/components/common/auth/CustomInput';
-import SubmitButton from '@/components/common/auth/SubmitButton';
-import VerifyButton from '@/components/common/auth/VerifyButton';
+import AccountPrompt from '@/components/features/auth/AccountPrompt';
+import CustomInput from '@/components/features/auth/CustomInput';
+import SubmitButton from '@/components/common/SubmitButton';
+import VerifyButton from '@/components/features/auth/VerifyButton';
 
 export default function SignupPage() {
   return (
