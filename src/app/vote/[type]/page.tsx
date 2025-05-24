@@ -1,4 +1,5 @@
 import VoteItem from "@/components/features/vote/VoteItem";
+import VoteList from "@/components/features/vote/VoteList";
 
 export default async function Page({
   params,
@@ -8,8 +9,7 @@ export default async function Page({
   const { type } = await params;
   return (
     <>
-      <VoteItem type={type} />
-      <VoteItem type={"demoday"} />
+      <VoteList type={type} />
     </>
   );
 }
