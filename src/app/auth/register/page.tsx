@@ -8,19 +8,20 @@ import InputFieldWithFeedback from "../_components/InputFieldWithFeedback";
 import SubmitButton from "@/components/SubmitButton";
 import Link from "next/link";
 import { PATH } from "@/constants/path";
-import { TEAM } from "@/constants/team";
+import { MemberData, TEAM } from "@/constants/team";
+import { PartLabel, TeamLabel } from "@/constants/team.label";
 
 const Register = () => {
   const [user, setUser] = useState({
-    id: "",
+    loginId: "",
     password: "",
     email: "",
     team: "",
     part: "",
-    name: "",
+    username: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [teamMember, setTeamMember] = useState<string[]>([]);
+  const [teamMember, setTeamMember] = useState<MemberData[]>([]);
 
   const handleChange = (
     e:
@@ -29,9 +30,9 @@ const Register = () => {
   ) => {
     const targetName = e.target.name;
     const targetValue = e.target.value;
-    if (targetName === "part/name") {
+    if (targetName === "part/username") {
       const [part, name] = targetValue.split("/");
-      setUser((prev) => ({ ...prev, part: part, name: name }));
+      setUser((prev) => ({ ...prev, part: part, username: name }));
     } else {
       setUser((prev) => ({ ...prev, [targetName]: targetValue }));
     }
@@ -45,15 +46,10 @@ const Register = () => {
 
   useEffect(() => {
     //team이 정해지면
-    const team = TEAM.find((team_) => team_?.name === user.team);
+    const team = TEAM.find((team_) => team_?.code === user.team);
     if (!user.team || !team) return;
 
-    const teamMem = [
-      ...team.front.map((name) => `프론트/${name}`),
-      ...team.back.map((name) => `백엔드/${name}`),
-    ];
-
-    setTeamMember(teamMem);
+    setTeamMember(team.members);
   }, [user.team]);
 
   return (
@@ -63,9 +59,9 @@ const Register = () => {
         <div>
           <InputField
             label="아이디"
-            name="id"
+            name="loginId"
             placeholder="아이디를 입력해주세요"
-            value={user.id}
+            value={user.loginId}
             onChange={handleChange}
           />
           <InputField
@@ -119,9 +115,9 @@ const Register = () => {
                 className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
               >
                 <option value="">팀 선택</option>
-                {TEAM.map((team) => (
-                  <option key={team?.name} value={team?.name}>
-                    {team?.name}
+                {Object.entries(TeamLabel).map(([code, label]) => (
+                  <option key={code} value={code}>
+                    {label}
                   </option>
                 ))}
               </select>
@@ -130,16 +126,19 @@ const Register = () => {
             <div className="flex-1 p-4 md:flex-2/3">
               <div className="font-caption-1 text-gray600">파트/이름</div>
               <select
-                name="part/name"
-                value={`${user.part}/${user.name}`}
+                name="part/username"
+                value={`${user.part}/${user.username}`}
                 onChange={handleChange}
                 className="font-headline-1 border-b-gray100 w-full py-[7px] outline-0"
               >
                 <option>팀원 선택</option>
                 {user.team &&
                   teamMember.map((member) => (
-                    <option key={member} value={member}>
-                      {member}
+                    <option
+                      key={member.name}
+                      value={`${member.part}/${member.name}`}
+                    >
+                      {`${PartLabel[member.part]}/${member.name}`}
                     </option>
                   ))}
               </select>
