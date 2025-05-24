@@ -9,20 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "clsx": "^2.1.1",
-=======
->>>>>>> 330d7f8 (chore: @svgr/webpack 설치 및 세팅)
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-<<<<<<< HEAD
-=======
     "@svgr/webpack": "^8.1.0",
->>>>>>> 330d7f8 (chore: @svgr/webpack 설치 및 세팅)
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

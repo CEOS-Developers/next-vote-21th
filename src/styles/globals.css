@@ -17,6 +17,9 @@
   --color-primary-500: #3e4cf7;
   --color-primary-600: #384084;
   --color-primary-700: #2333ff;
+
+  /* 타이틀 줄 간격 overwrite */
+  --text-5xl--line-height: 1.2;
 }
 
 body {
@@ -27,14 +30,9 @@ body {
   min-height: 100vh;
 }
 
-@layer base {
-  button {
-    cursor: pointer;
-  }
-
-  button:disabled {
-    pointer-events: none;
-  }
+button,
+a {
+  cursor: pointer;
 }
 
 @layer utility {
