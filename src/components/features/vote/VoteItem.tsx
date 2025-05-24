@@ -18,7 +18,12 @@ export default function VoteItem({ type }: { type: "leader" | "demoday" }) {
         <span className="w-40 en-text text-[28px] font-normal truncate">
           {isLeaderVote ? "TeamName" : "ProjectName"}
         </span>
-        <span className={clsx(isLeaderVote ? "text-[28px]" : "text-[24px]")}>
+        <span
+          className={clsx(
+            "truncate",
+            isLeaderVote ? "text-[28px]" : "text-[24px]"
+          )}
+        >
           {isLeaderVote ? "성이름" : "설명설명설명설명 설명설명 설명설명 설명"}
         </span>
       </label>
