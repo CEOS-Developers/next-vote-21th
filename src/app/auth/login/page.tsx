@@ -14,7 +14,7 @@ export default function LoginPage() {
 
     // 로그인 성공 시, 팀 선택된 상태면 홈으로 이동 (팀 선택 안된 상태면 팀 선택 페이지로 이동)
 
-    router.push('/home');
+    router.push('/vote/leader');
   };
 
   return (

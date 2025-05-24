@@ -15,7 +15,7 @@ export default function TeamPage() {
 
     // 팀 선택 성공 시 홈으로 이동
 
-    router.push('/home');
+    router.push('/vote/leader');
   };
 
   return (
@@ -31,7 +31,7 @@ export default function TeamPage() {
           <TeamSquadDropdown type="Team" />
           <TeamSquadDropdown type="Squad" />
         </div>
-        <SubmitButton buttonText="Sign Up" />
+        <SubmitButton buttonText="Get Started" />
       </form>
     </div>
   );

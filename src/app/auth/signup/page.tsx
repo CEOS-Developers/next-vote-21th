@@ -38,7 +38,7 @@ export default function SignupPage() {
           </div>
           <CustomInput type="password" placeholder="Password" />
         </div>
-        <SubmitButton buttonText="Get Started" />
+        <SubmitButton buttonText="Sign Up" />
       </form>
 
       <AccountPrompt
