@@ -1,15 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
+import "@/styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const pretendard = localFont({
+  src: "../fonts/Pretendard_Variable.woff2",
+  weight: "100 900",
+  style: "normal",
+  display: "swap",
+  variable: "--font-pretendard", // CSS 변수 설정
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const loosNormal = localFont({
+  src: [
+    {
+      path: "../fonts/LoosNormal_Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/LoosNormal_Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-loos-normal", // CSS 변수 설정
 });
 
 export const metadata: Metadata = {
@@ -25,8 +40,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${loosNormal.variable} ${pretendard.variable} antialiased`}
       >
+        <div>한글을쓰면</div>
+        <div className="en-text">영어를쓰면</div>
         {children}
       </body>
     </html>
