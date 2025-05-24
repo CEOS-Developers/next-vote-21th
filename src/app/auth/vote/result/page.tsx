@@ -18,7 +18,7 @@ const Result = () => {
     <div className="flex h-full flex-col text-black">
       <Header>프론트엔드 파트장 투표</Header>
 
-      <div className="m-[16px] box-border rounded-full bg-white px-6 py-2 text-center text-[12px] font-semibold text-[#00AF8F] shadow-sm">
+      <div className="mx-auto box-border w-full max-w-[345px] rounded-full bg-white px-6 py-2 text-center text-[12px] font-semibold text-[#00AF8F] shadow-sm">
         CEOS 22기 프론트엔드 파트장 1명을 투표해주세요.
       </div>
 
@@ -27,7 +27,10 @@ const Result = () => {
           {rankedCandidates.map((c, index) => {
             const isFirst = index === 0;
             return (
-              <div key={c.name} className="flex items-center gap-4">
+              <div
+                key={c.name}
+                className="mx-auto flex max-w-[350px] min-w-[280px] items-center gap-4"
+              >
                 <div
                   className={`flex h-8 w-8 items-center justify-center rounded-full border text-sm font-bold ${
                     isFirst

@@ -29,12 +29,12 @@ const Vote = () => {
     <div className="flex h-full flex-col text-black">
       <Header>프론트엔드 파트장 투표</Header>
 
-      <div className="m-[16px] box-border rounded-full bg-white px-6 py-2 text-center text-[12px] font-semibold text-[#00AF8F] shadow-sm">
+      <div className="mx-auto box-border w-full max-w-[345px] rounded-full bg-white px-6 py-2 text-center text-[12px] font-semibold text-[#00AF8F] shadow-sm">
         CEOS 22기 프론트엔드 파트장 1명을 투표해주세요.
       </div>
 
       <form className="flex flex-1 flex-col justify-between">
-        <div className="grid grid-cols-2 gap-4 p-4">
+        <div className="mx-auto grid grid-cols-2 gap-4 p-4">
           {candidates.map((c) => {
             const isActive = selected === c.name;
             return (
@@ -42,7 +42,7 @@ const Vote = () => {
                 type="button"
                 key={c.name}
                 onClick={() => handleSelect(c.name)}
-                className={`group flex h-[66px] flex-row items-center gap-2 rounded-[4px] p-4 shadow transition duration-200 ease-in-out ${isActive ? "scale-[1.01] bg-[#00AF8F] text-white shadow-lg" : "bg-white text-black hover:scale-[1.01] hover:bg-[#00AF8F] hover:text-white hover:shadow-lg"}`}
+                className={`group flex h-[66px] max-w-[345px] flex-row items-center gap-2 rounded-[4px] p-4 shadow transition duration-200 ease-in-out ${isActive ? "scale-[1.01] bg-[#00AF8F] text-white shadow-lg" : "bg-white text-black hover:scale-[1.01] hover:bg-[#00AF8F] hover:text-white hover:shadow-lg"}`}
               >
                 <div
                   className={`font-semibold ${
