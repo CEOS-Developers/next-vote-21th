@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@layer theme {
+  :root {
+    --color-main: #00af8f;
+    --color-pink: #eb4d9a;
+    --color-gray0: #f8f9fb;
+    --color-gray1: #bab9c6;
+
+    --color-gray50: #fcfcfe;
+    --color-gray100: #ebebf0;
+    --color-gray200: #e4e4eb;
+    --color-gray500: #a4a3ae;
+    --color-gray600: #72717d;
+    --color-gray900: #121214;
+
+    --color-bg-gray: #f6f8fa;
+  }
+}
+
+@layer utilities {
+  .text-main {
+    color: var(--color-main);
+  }
+  .text-pink {
+    color: var(--color-pink);
+  }
+  .text-gray50 {
+    color: var(--color-gray50);
+  }
+  .text-gray500 {
+    color: var(--color-gray500);
+  }
+  .text-gray600 {
+    color: var(--color-gray600);
+  }
+  .text-gray900 {
+    color: var(--color-gray900);
+  }
+
+  .bg-default-gray {
+    background-color: var(--color-bg-gray);
+  }
+  .bg-sign {
+    background-color: var(--color-gray50);
+  }
+
+  .bg-main {
+    background-color: var(--color-main);
+  }
+  .bg-gray1 {
+    background-color: var(--color-gray1);
+  }
+  .bg-gray50 {
+    background-color: var(--color-gray50);
+  }
+
+  .border-home-btn {
+    border: 1px solid rgba(237, 239, 243, 1);
+  }
+  .border-b-gray100 {
+    border-bottom: 1px solid var(--color-gray100);
+  }
+  .border-b-gray200 {
+    border-bottom: 1px solid var(--color-gray200);
+  }
+
+  .shadow-08 {
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+  }
+  .shadow-12 {
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  .rounded {
+    border-radius: 4px;
+  }
+}
