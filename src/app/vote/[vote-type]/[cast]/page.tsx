@@ -51,7 +51,7 @@ export default function VoteStep2() {
     <>
       {/* title */}
       <div className="mt-8 mb-15 flex items-center px-8">
-        <Back />
+        <Back href={`/vote/${params['vote-type']}/list`} />
         <h1 className="text-headline-03 text-grayscale-00-black mx-auto">{getTitle()}</h1>
       </div>
       {/* content */}
