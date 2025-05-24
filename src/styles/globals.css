@@ -45,6 +45,23 @@ a {
   }
 
   .input-dropdown-common {
-    @apply w-full h-fit py-4 px-4 border-2 border-monochrome-200 rounded-lg text-xl font-normal
+    @apply w-full h-fit py-4 px-4 border-2 border-monochrome-200 rounded-lg text-xl font-normal;
+  }
+
+  .gnb-box-shadow {
+    box-shadow: 1px 1px 2px 0px rgba(255, 255, 255, 0.3) inset,
+      -1px -1px 2px 0px rgba(237, 237, 237, 0.5) inset,
+      -4px 4px 8px 0px rgba(237, 237, 237, 0.2),
+      4px -4px 8px 0px rgba(237, 237, 237, 0.2),
+      -4px -4px 8px 0px rgba(255, 255, 255, 0.9),
+      4px 4px 10px 0px rgba(237, 237, 237, 0.9);
+  }
+
+  .gnb-option {
+    @apply text-2xl;
+  }
+
+  .gnb-option-active {
+    @apply text-primary-700 font-medium;
   }
 }
