@@ -1,29 +1,60 @@
-export const TEAM = [
+import { Part } from "./part.enum";
+import { Team } from "./team.enum";
+
+export interface MemberData {
+  name: string;
+  part: Part;
+}
+
+export interface TeamData {
+  code: Team;
+  members: MemberData[];
+}
+
+export const TEAM: TeamData[] = [
   {
-    name: "이어드림",
-    front: ["김영서", "이주희"],
-    back: ["한혜수", "오지현"],
+    code: Team.DEARDREAM,
+    members: [
+      { name: "김영서", part: Part.FRONTEND },
+      { name: "이주희", part: Part.FRONTEND },
+      { name: "한혜수", part: Part.BACKEND },
+      { name: "오지현", part: Part.BACKEND },
+    ],
   },
   {
-    name: "인플루이",
-    front: ["최서연", "한서정"],
-    back: ["박서연", "박채연"],
+    code: Team.INFLUEE,
+    members: [
+      { name: "최서연", part: Part.FRONTEND },
+      { name: "한서정", part: Part.FRONTEND },
+      { name: "박서연", part: Part.BACKEND },
+      { name: "박채연", part: Part.BACKEND },
+    ],
   },
   {
-    name: "팝업사이클",
-    front: ["김철흥", "송아영"],
-    back: ["김준형", "임도현"],
+    code: Team.POPUPCYCLE,
+    members: [
+      { name: "김철흥", part: Part.FRONTEND },
+      { name: "송아영", part: Part.FRONTEND },
+      { name: "김준형", part: Part.BACKEND },
+      { name: "임도현", part: Part.BACKEND },
+    ],
   },
-  ,
   {
-    name: "프로메사",
-    front: ["권동욱", "김서연"],
-    back: ["박정하", "서채연"],
+    code: Team.PROMETHA,
+    members: [
+      { name: "권동욱", part: Part.FRONTEND },
+      { name: "김서연", part: Part.FRONTEND },
+      { name: "박정하", part: Part.BACKEND },
+      { name: "서채연", part: Part.BACKEND },
+    ],
   },
-  ,
   {
-    name: "하니홈",
-    front: ["신수진", "원채영"],
-    back: ["이석원", "최근호"],
+    code: Team.HONEYHOME,
+    members: [
+      { name: "신수진", part: Part.FRONTEND },
+      { name: "원채영", part: Part.FRONTEND },
+      { name: "이석원", part: Part.BACKEND },
+      { name: "최근호", part: Part.BACKEND },
+    ],
   },
 ];

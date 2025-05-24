@@ -1,46 +1,73 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PATH } from "@/constants/path";
+import { useLogin } from "@/hooks/useLogin";
 
 import Header from "../_components/Header";
 import InputFieldWithFeedback from "../_components/InputFieldWithFeedback";
 import SubmitButton from "@/components/SubmitButton";
 
 const Login = () => {
-  const [id, setId] = useState("");
+  const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorState, setErrorState] = useState({
+    isUserIdValid: true,
+    isPasswordValid: true,
+  });
 
-  const doesUserIdExist = (id: string) => {
-    //존재하는지 확인 로직
-    console.log(id);
-    return true;
-  };
-  const isPasswordCorrect = (password: string) => {
-    //일치하는지 확인 로직
-    console.log(password);
-    return true;
-  };
+  useEffect(() => {
+    console.log(errorMessage);
+    if (errorMessage === "해당 유저를 찾을 수 없습니다.")
+      return setErrorState({ isUserIdValid: false, isPasswordValid: true });
 
-  const isUserIdValid = doesUserIdExist(id);
-  const isPasswordValid = isPasswordCorrect(password);
+    if (errorMessage === "패스워드가 일치하지 않습니다.")
+      return setErrorState({ isUserIdValid: true, isPasswordValid: false });
+  }, [errorMessage]);
+
+  const { mutate: login, isPending } = useLogin();
+  const submitLoginForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!loginId || !password) {
+      alert("모든 필드를 입력해주세요.");
+      return;
+    }
+
+    login(
+      { loginId, password },
+      {
+        onError: (error: unknown) => {
+          if (error instanceof Error) {
+            setErrorMessage(error.message);
+          }
+        },
+      },
+    );
+  };
 
   return (
     <div className="flex h-full flex-col">
       <Header>로그인</Header>
 
-      <form className="flex flex-1 flex-col justify-between md:min-w-3xl md:self-center">
+      <form
+        onSubmit={submitLoginForm}
+        className="flex flex-1 flex-col justify-between md:min-w-3xl md:self-center"
+      >
         <div className="flex flex-col">
           <InputFieldWithFeedback
             label="아이디"
             name="id"
             placeholder="아이디를 입력해주세요"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-            isValid={isUserIdValid}
+            value={loginId}
+            onChange={(e) => setLoginId(e.target.value)}
+            isValid={errorState.isUserIdValid}
             message={
-              isUserIdValid ? "" : "아이디와 일치하는 계정이 존재하지 않습니다."
+              errorState.isUserIdValid
+                ? ""
+                : "아이디와 일치하는 계정이 존재하지 않습니다."
             }
           />
 
@@ -51,8 +78,10 @@ const Login = () => {
             placeholder="비밀번호를 입력해주세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            isValid={isPasswordValid}
-            message={isPasswordValid ? " " : "비밀번호가 일치하지 않습니다."}
+            isValid={errorState.isPasswordValid}
+            message={
+              errorState.isPasswordValid ? " " : "비밀번호가 일치하지 않습니다."
+            }
           />
 
           <Link href={PATH.REGISTER} className="self-end px-4">
@@ -61,7 +90,9 @@ const Login = () => {
           </Link>
         </div>
 
-        <SubmitButton isActive={false}>로그인 하기</SubmitButton>
+        <SubmitButton isActive={!!loginId && !!password && !isPending}>
+          {isPending ? "로그인 중..." : "로그인 하기"}
+        </SubmitButton>
       </form>
     </div>
   );
