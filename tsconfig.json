@@ -23,9 +23,11 @@
       "@public/*": ["public/*"],
       "@app/*": ["src/app/*"],
       "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"],
+      "@constants/*": ["src/constants/*"],
+      "@libs/*": ["src/libs/*"],
+      "@models/*": ["src/models/*"],
       "@stores/*": ["src/stores/*"],
-      "@constants/*": ["src/constants/*"]
+      "@styles/*": ["src/styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
