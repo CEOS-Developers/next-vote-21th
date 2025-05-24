@@ -19,12 +19,5 @@ export const useLogin = () => {
       });
       router.push("/");
     },
-    // onError: (error: unknown) => {
-    //   if (error instanceof Error) {
-    //     console.error("로그인 실패 ❌", error.message);
-    //   } else {
-    //     console.error("로그인 실패 ❌ 알 수 없는 에러 발생");
-    //   }
-    // },
   });
 };
