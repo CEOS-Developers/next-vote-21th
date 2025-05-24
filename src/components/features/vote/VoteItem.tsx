@@ -20,7 +20,7 @@ export default function VoteItem({ type }: { type: "leader" | "demoday" }) {
         </span>
         <span
           className={clsx(
-            "truncate",
+            "text-right truncate",
             isLeaderVote ? "text-[28px]" : "text-[24px]"
           )}
         >
