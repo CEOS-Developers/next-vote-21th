@@ -1,3 +1,5 @@
+import ResultItem from "@/components/features/vote/ResultItem";
+import ResultList from "@/components/features/vote/ResultList";
 import VoteItem from "@/components/features/vote/VoteItem";
 import VoteList from "@/components/features/vote/VoteList";
 
@@ -10,6 +12,7 @@ export default async function Page({
   return (
     <>
       <VoteList type={type} />
+      <ResultList type={"demoday"} />
     </>
   );
 }
