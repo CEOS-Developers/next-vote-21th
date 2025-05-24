@@ -1,15 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 import Header from "../_components/Header";
 import InputField from "../_components/InputField";
 import InputFieldWithFeedback from "../_components/InputFieldWithFeedback";
 import SubmitButton from "@/components/SubmitButton";
-import Link from "next/link";
+
+import { useSignup } from "@/hooks/useSignup";
 import { PATH } from "@/constants/path";
 import { MemberData, TEAM } from "@/constants/team";
 import { PartLabel, TeamLabel } from "@/constants/team.label";
+import { User } from "@/constants/user";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -52,10 +55,43 @@ const Register = () => {
     setTeamMember(team.members);
   }, [user.team]);
 
+  const { mutate: signup, isPending } = useSignup();
+
+  const submitSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (
+      !user.loginId ||
+      !user.password ||
+      !user.email ||
+      !user.team ||
+      !user.part ||
+      !user.username
+    ) {
+      alert("모든 필드를 입력해주세요.");
+      return;
+    }
+
+    if (user.password !== confirmPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    if (!isValidEmail) {
+      alert("유효한 이메일을 입력해주세요.");
+      return;
+    }
+
+    signup(user as User);
+  };
+
   return (
     <div className="flex h-full flex-col">
       <Header>회원가입</Header>
-      <form className="flex flex-1 flex-col justify-between md:min-w-3xl md:self-center">
+      <form
+        onSubmit={submitSignUpForm}
+        className="flex flex-1 flex-col justify-between md:min-w-3xl md:self-center"
+      >
         <div>
           <InputField
             label="아이디"
@@ -75,7 +111,7 @@ const Register = () => {
           <InputFieldWithFeedback
             label="비밀번호 확인"
             type="password"
-            name="password"
+            name="passwordConfirm"
             placeholder="비밀번호를 다시 입력해주세요"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -152,7 +188,21 @@ const Register = () => {
             <span className="text-main">로그인 하러가기</span>
           </Link>
 
-          <SubmitButton isActive={false}>가입하기</SubmitButton>
+          <SubmitButton
+            isActive={
+              !!user.loginId &&
+              !!user.password &&
+              !!confirmPassword &&
+              user.password === confirmPassword &&
+              isValidEmail &&
+              !!user.team &&
+              !!user.part &&
+              !!user.username &&
+              !isPending
+            }
+          >
+            {isPending ? "가입 중..." : "가입하기"}
+          </SubmitButton>
         </div>
       </form>
     </div>

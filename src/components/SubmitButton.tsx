@@ -9,6 +9,7 @@ const SubmitButton = ({
   return (
     <div className="mx-4 my-6">
       <button
+        disabled={!isActive}
         className={`${style} font-headline-2 text-gray50 shadow-08 w-full rounded py-3.5 whitespace-nowrap`}
       >
         {children}
