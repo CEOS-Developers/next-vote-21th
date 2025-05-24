@@ -1,11 +1,16 @@
-import { User } from "@/constants/user";
 import { API_URLS } from "./apiUrls";
 
-export const signup = async (user: User) => {
-  const response = await fetch(API_URLS.Register, {
+export const login = async ({
+  loginId,
+  password,
+}: {
+  loginId: string;
+  password: string;
+}) => {
+  const response = await fetch(API_URLS.Login, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user),
+    body: JSON.stringify({ loginId, password }),
   });
 
   const data = await response.json();
@@ -15,7 +20,7 @@ export const signup = async (user: User) => {
   }
 
   if (!data.isSuccess) {
-    throw new Error(data.message || "회원가입 실패 ❌");
+    throw new Error(data.message || "로그인 실패 ❌");
   }
 
   return data;

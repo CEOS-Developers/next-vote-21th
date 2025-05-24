@@ -6,9 +6,7 @@ export const useSignup = () => {
     mutationFn: signup,
     onSuccess: (data) => {
       console.log("회원가입 성공 ✅");
-      console.log("응답 코드:", data.code);
       console.log("응답 메시지:", data.message);
-      console.log("결과 객체:", data.result);
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
