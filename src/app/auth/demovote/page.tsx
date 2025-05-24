@@ -23,7 +23,7 @@ const Vote = () => {
     <div className="flex h-full flex-col text-black">
       <Header>데모데이 투표</Header>
 
-      <div className="m-[16px] box-border rounded-full bg-white px-6 py-2 text-center text-[12px] font-semibold text-[#00AF8F] shadow-sm">
+      <div className="mx-auto box-border w-full max-w-[345px] rounded-full bg-white px-6 py-2 text-center text-[12px] font-semibold text-[#00AF8F] shadow-sm">
         CEOS 21기 데모데이 최고의 1팀을 투표해주세요.
       </div>
 
@@ -36,7 +36,7 @@ const Vote = () => {
                 type="button"
                 key={name}
                 onClick={() => handleSelect(name)}
-                className={`h-[56px] rounded-[6px] p-4 text-center text-sm font-semibold shadow-sm transition duration-200 ease-in-out ${
+                className={`mx-auto h-[56px] max-w-[350px] min-w-[350px] rounded-[6px] p-4 text-center text-sm font-semibold shadow-sm transition duration-200 ease-in-out ${
                   isActive
                     ? "bg-[#00AF8F] text-white shadow-md"
                     : "bg-white text-black hover:bg-[#00AF8F] hover:text-white hover:shadow-md"
