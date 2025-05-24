@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* monochrome */
@@ -22,6 +22,9 @@
 body {
   color: var(--color-monochrome-black);
   font-family: var(--font-pretendard), sans-serif;
+
+  width: 100vw;
+  min-height: 100vh;
 }
 
 @layer base {
@@ -37,5 +40,9 @@ body {
 @layer utility {
   .en-text {
     font-family: var(--font-loos-normal), sans-serif;
+  }
+
+  .intro-panel-bg {
+    background: linear-gradient(315deg, #779bff -3.03%, #ffe4e4 60.18%);
   }
 }
