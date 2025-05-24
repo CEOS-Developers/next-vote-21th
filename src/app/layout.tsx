@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={`${pretendard.className} flex min-h-screen items-center justify-center`}>
         <div className="mobile-frame bg-neutral-01 relative">{children}</div>
       </body>

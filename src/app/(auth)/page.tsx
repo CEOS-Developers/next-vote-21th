@@ -1,10 +1,14 @@
+'use client';
+
 import Button from '@components/features/auth/button';
+import { useAuthStore } from '@libs/auth';
 import VoteIcon from '@public/icons/vote.svg';
 import Link from 'next/link';
 
 export default function Landing() {
-  const isAuth = true;
-  const id = 'donguk.kwon';
+  const user = useAuthStore((state) => state.user);
+  const isAuth = !!user;
+  const id = user?.id || '';
 
   return (
     <div className="flex h-full flex-col px-10">
