@@ -42,8 +42,6 @@ export default function RootLayout({
       <body
         className={`${loosNormal.variable} ${pretendard.variable} antialiased`}
       >
-        <div>한글을쓰면</div>
-        <div className="en-text">영어를쓰면</div>
         {children}
       </body>
     </html>
