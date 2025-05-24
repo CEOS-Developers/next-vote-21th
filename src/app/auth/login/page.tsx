@@ -18,7 +18,11 @@ export default function LoginPage() {
         <SubmitButton buttonText="Login" />
       </form>
 
-      <AccountPrompt prompt="계정이 없으신가요?" route="/auth/signup" />
+      <AccountPrompt
+        prompt="계정이 없으신가요?"
+        linkText="회원가입"
+        route="/auth/signup"
+      />
     </div>
   );
 }
