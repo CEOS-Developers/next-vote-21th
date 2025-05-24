@@ -4,7 +4,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 const Lottie = () => {
   return (
     <DotLottieReact
-      src="https://lottie.host/3d761d28-0ea3-4665-9fe2-3ee370978a25/yiVW4lTlbZ.json"
+      src="https://lottie.host/f0fa95c9-a607-4731-8a20-bf9c3bc05beb/rfuQE6aXFq.lottie"
       loop
       autoplay
       speed={0.6}

@@ -30,7 +30,7 @@ const Login = () => {
     <div className="flex h-full flex-col">
       <Header>로그인</Header>
 
-      <form className="flex flex-1 flex-col justify-between">
+      <form className="flex flex-1 flex-col justify-between md:min-w-3xl md:self-center">
         <div className="flex flex-col">
           <InputFieldWithFeedback
             label="아이디"

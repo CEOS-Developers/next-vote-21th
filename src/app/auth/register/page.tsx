@@ -59,7 +59,7 @@ const Register = () => {
   return (
     <div className="flex h-full flex-col">
       <Header>회원가입</Header>
-      <form className="flex flex-1 flex-col justify-between">
+      <form className="flex flex-1 flex-col justify-between md:min-w-3xl md:self-center">
         <div>
           <InputField
             label="아이디"
@@ -110,7 +110,7 @@ const Register = () => {
           />
 
           <div className="flex">
-            <div className="p-4">
+            <div className="p-4 md:flex-1/3">
               <div className="font-caption-1 text-gray600">팀</div>
               <select
                 name="team"
@@ -127,7 +127,7 @@ const Register = () => {
               </select>
             </div>
 
-            <div className="flex-1 p-4">
+            <div className="flex-1 p-4 md:flex-2/3">
               <div className="font-caption-1 text-gray600">파트/이름</div>
               <select
                 name="part/name"
