@@ -45,7 +45,14 @@ export default function VoteResultTab({
 
       {/* 탭 컨텐츠 */}
       {activeTab === "Vote" ? (
-        <VoteList type={type} />
+        type === "leader" ? (
+          <div className="flex gap-30">
+            <VoteList type={type} />
+            <VoteList type={type} />
+          </div>
+        ) : (
+          <VoteList type={type} />
+        )
       ) : (
         <ResultList type={type} />
       )}
