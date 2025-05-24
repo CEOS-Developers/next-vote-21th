@@ -18,7 +18,7 @@ export default function VoteResultTab({
   ];
 
   return (
-    <div className="flex flex-col gap-12 items-center">
+    <div className="flex flex-col gap-12 items-center en-text">
       <div className="flex">
         {/* 탭 버튼 */}
         {tabs.map((tab) => (
