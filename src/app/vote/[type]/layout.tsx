@@ -6,7 +6,7 @@ export default function VoteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div className="w-full h-full pt-24 flex flex-col items-center">
       <GNB />
       {children}
     </div>

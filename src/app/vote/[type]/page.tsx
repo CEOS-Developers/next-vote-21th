@@ -7,10 +7,12 @@ export default async function Page({
   params: Promise<{ type: 'leader' | 'demoday' }>;
 }) {
   const { type } = await params;
+
   const ordinalNumber = type === 'leader' ? '22nd' : '21st';
   const headerContent = type === 'leader' ? 'Team Leader' : 'Demo Day';
+
   return (
-    <div className="flex flex-col items-center gap-4 mt-53 pb-50">
+    <div className="w-full h-fit pt-21 flex flex-col items-center gap-4">
       <header className="text-[40px] en-text flex flex-col items-center">
         CEOS {ordinalNumber} {headerContent} Vote
         <Image src={'/brush.svg'} alt="브러쉬" width={429} height={9} />
