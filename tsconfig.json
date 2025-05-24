@@ -23,6 +23,10 @@
       "@public/*": ["public/*"],
       "@app/*": ["src/app/*"],
       "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@libs/*": ["src/libs/*"],
+      "@models/*": ["src/models/*"],
+      "@stores/*": ["src/stores/*"],
       "@styles/*": ["src/styles/*"]
     }
   },

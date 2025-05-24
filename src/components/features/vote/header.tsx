@@ -5,20 +5,16 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const pathname = usePathname();
-  const current = pathname.split('/')[3];
+  const segments = pathname.split('/');
+
+  const current = segments[3];
+  const sub = segments[4];
 
   const activeIndex = (() => {
-    switch (current) {
-      case 'list':
-        return 0;
-      case 'cast':
-      case 'loading':
-        return 1;
-      case 'result':
-        return 2;
-      default:
-        return -1;
-    }
+    if (current === 'list') return 0;
+    if (['front', 'back', 'team', 'aggregate', 'loading'].includes(current) && sub !== 'result') return 1;
+    if (sub === 'result') return 2;
+    return -1;
   })();
 
   if (activeIndex === -1) return null;
