@@ -43,4 +43,8 @@ a {
   .intro-panel-bg {
     background: linear-gradient(315deg, #779bff -3.03%, #ffe4e4 60.18%);
   }
+
+  .input-dropdown-common {
+    @apply w-full h-fit py-4 px-4 border-2 border-monochrome-200 rounded-lg text-xl font-normal
+  }
 }
