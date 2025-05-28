@@ -1,10 +1,11 @@
 'use client';
 
-import Back from '@components/common/back';
-import CandidateGrid from '@components/features/vote/candidate-grid';
-import { BE, FE, TEAMS } from '@constants/memberData';
-import { useVoteStore } from '@stores/vote-store';
 import { useParams, useRouter } from 'next/navigation';
+
+import Back from '@/components/common/back';
+import CandidateGrid from '@/components/features/vote/candidate-grid';
+import { BE, FE, TEAMS } from '@/lib/constants/member-data';
+import { useVoteStore } from '@/lib/store/use-vote-store';
 
 export default function VoteStep2() {
   const params = useParams();

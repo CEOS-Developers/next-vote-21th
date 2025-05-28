@@ -1,8 +1,9 @@
 'use client';
 
-import Back from '@components/common/back';
-import GoToVoteButton from '@components/features/vote/go-to-vote-button';
 import { useParams } from 'next/navigation';
+
+import Back from '@/components/common/back';
+import GoToVoteButton from '@/components/features/vote/go-to-vote-button';
 
 export default function VoteStep1() {
   const params = useParams();

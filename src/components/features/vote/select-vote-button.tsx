@@ -1,7 +1,8 @@
 'use client';
 
-import { useVoteStore } from '@stores/vote-store';
 import { useRouter } from 'next/navigation';
+
+import { useVoteStore } from '@/lib/store/use-vote-store';
 
 type ButtonProps = {
   text: string;

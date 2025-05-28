@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Arrow from '@public/icons/arrow.svg';
-import Box from '@public/icons/box.svg';
-import Paper from '@public/icons/paper.svg';
 import { useParams, useRouter } from 'next/navigation';
+
+import Arrow from '@/public/icons/arrow.svg';
+import Box from '@/public/icons/box.svg';
+import Paper from '@/public/icons/paper.svg';
 
 export default function VoteStep3() {
   const router = useRouter();

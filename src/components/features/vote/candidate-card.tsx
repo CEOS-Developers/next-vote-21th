@@ -1,7 +1,8 @@
 'use client';
 
-import { useVoteStore } from '@stores/vote-store';
 import { useParams } from 'next/navigation';
+
+import { useVoteStore } from '@/lib/store/use-vote-store';
 
 export default function CandidateCard({ name }: { name: string }) {
   const params = useParams();

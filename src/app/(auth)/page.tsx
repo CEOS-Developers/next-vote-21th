@@ -1,9 +1,10 @@
 'use client';
 
-import Button from '@components/features/auth/button';
-import { useAuthStore } from '@libs/auth';
-import VoteIcon from '@public/icons/vote.svg';
 import Link from 'next/link';
+
+import Button from '@/components/features/auth/button';
+import { useAuthStore } from '@/lib/store/use-auth-store';
+import VoteIcon from '@/public/icons/vote.svg';
 
 export default function Landing() {
   const user = useAuthStore((state) => state.user);

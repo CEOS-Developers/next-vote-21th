@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import LogoutModal from '@components/common/modal';
+
+import LogoutModal from '@/components/common/modal';
 
 export default function Indicator() {
   const [showLogout, setShowLogout] = useState(false);

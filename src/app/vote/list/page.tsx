@@ -1,4 +1,4 @@
-import SelectVoteButton from '@components/features/vote/select-vote-button';
+import SelectVoteButton from '@/components/features/vote/select-vote-button';
 
 export default function VoteList() {
   return (

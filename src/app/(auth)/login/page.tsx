@@ -1,13 +1,14 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-import Back from '@components/common/back';
-import Button from '@components/features/auth/button';
-import InputForm from '@components/features/auth/input-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAuthStore } from '@libs/auth';
-import { LoginInput, loginSchema } from '@models/auth';
 import { useRouter } from 'next/navigation';
+
+import Back from '@/components/common/back';
+import Button from '@/components/features/auth/button';
+import InputForm from '@/components/features/auth/input-form';
+// import { useAuthStore } from '@/lib/store/use-auth-store';
+import { LoginInput, loginSchema } from '@/types/auth.dto';
 
 export default function Login() {
   const {
@@ -17,7 +18,7 @@ export default function Login() {
   } = useForm<LoginInput>({ resolver: zodResolver(loginSchema) });
 
   const router = useRouter();
-  const login = useAuthStore((state) => state.login);
+  // const login = useAuthStore((state) => state.login);
 
   const onSubmit = (data: LoginInput) => {
     const dummyToken = 'fake-jwt-token';
@@ -25,7 +26,7 @@ export default function Login() {
     console.log(data);
 
     localStorage.setItem('token', dummyToken);
-    login(data.id);
+    // login(data.id);
     router.push('/');
   };
 
