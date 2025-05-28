@@ -1,10 +1,11 @@
 'use client';
 
-import Back from '@components/common/back';
-import CandidateGrid from '@components/features/vote/candidate-grid';
-import { BE, FE, TEAMS } from '@constants/memberData';
-import { useVoteStore } from '@stores/vote-store';
 import { useParams, useRouter } from 'next/navigation';
+
+import Back from '@/components/common/back';
+import CandidateGrid from '@/components/features/vote/candidate-grid';
+import { BE, FE, TEAMS } from '@/lib/constants/member-data';
+import { useVoteStore } from '@/lib/store/use-vote-store';
 
 export default function VoteStep2() {
   const params = useParams();
@@ -51,7 +52,7 @@ export default function VoteStep2() {
     <>
       {/* title */}
       <div className="mt-8 mb-15 flex items-center px-8">
-        <Back />
+        <Back href={`/vote/${params['vote-type']}/list`} />
         <h1 className="text-headline-03 text-grayscale-00-black mx-auto">{getTitle()}</h1>
       </div>
       {/* content */}

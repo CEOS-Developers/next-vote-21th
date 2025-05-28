@@ -1,6 +1,6 @@
 'use client';
 
-import Crown from '@public/icons/crown.svg';
+import Crown from '@/public/icons/crown.svg';
 
 export default function ResultCard({ name, votes, isTop }: { name: string; votes: number; isTop: boolean }) {
   return (

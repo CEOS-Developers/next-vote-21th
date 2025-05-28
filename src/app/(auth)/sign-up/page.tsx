@@ -1,12 +1,13 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-import Back from '@components/common/back';
-import Button from '@components/features/auth/button';
-import InputForm from '@components/features/auth/input-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SignUpInput, signUpSchema } from '@models/auth';
 import { useRouter } from 'next/navigation';
+
+import Back from '@/components/common/back';
+import Button from '@/components/features/auth/button';
+import InputForm from '@/components/features/auth/input-form';
+import { SignUpInput, signUpSchema } from '@/types/auth.dto';
 
 export default function SignUp() {
   const {
@@ -26,7 +27,7 @@ export default function SignUp() {
   return (
     <div className="flex h-full flex-col px-10">
       <div className="mt-8 mb-8 flex items-center">
-        <Back />
+        <Back href="/" />
         <h1 className="text-headline-03 text-grayscale-00-black mx-auto">Sign Up</h1>
       </div>
       <div className="flex flex-col gap-4">

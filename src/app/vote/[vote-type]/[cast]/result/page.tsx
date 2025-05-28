@@ -1,8 +1,9 @@
 'use client';
 
-import ResultGrid from '@components/features/vote/result-grid';
-import { BE, FE, TEAMS } from '@constants/memberData';
 import { useParams, useRouter } from 'next/navigation';
+
+import ResultGrid from '@/components/features/vote/result-grid';
+import { BE, FE, TEAMS } from '@/lib/constants/member-data';
 
 export default function VoteStep3() {
   const params = useParams();
