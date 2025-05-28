@@ -1,6 +1,7 @@
 import React from 'react';
-import Indicator from '@components/common/indicator';
-import Header from '@components/features/vote/header';
+
+import Indicator from '@/components/common/indicator';
+import Header from '@/components/features/vote/header';
 
 export default function RootLayout({
   children,
