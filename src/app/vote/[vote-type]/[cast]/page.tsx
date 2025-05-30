@@ -17,7 +17,7 @@ export default function VoteStep2() {
   const getCandidates = () => {
     if (type === 'front') return MEMBER_DATA['FE'];
     if (type === 'back') return MEMBER_DATA['BE'];
-    return [...TEAM_LABELS];
+    return TEAM_LABELS;
   };
 
   const getTitle = () => {
