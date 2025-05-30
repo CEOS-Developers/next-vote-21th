@@ -18,10 +18,12 @@ export default function InputForm<T extends FieldValues>({
   return (
     <div className="flex flex-col gap-1">
       <div className="text-caption-04 flex items-center gap-2">
-        <label className="text-accent-brown">{label}</label>{' '}
+        <label htmlFor={name} className="text-accent-brown">
+          {label}
+        </label>
         {error && <p className="text-[10px] text-red-500">{error.message}</p>}
       </div>
-      <input {...register(name)} type={type} className="text-body-02 outline-none" />
+      <input id={name} {...register(name)} type={type} className="text-body-02 outline-none" autoComplete="off" />
       <hr className="bg-accent-brown h-[2px]" />
     </div>
   );

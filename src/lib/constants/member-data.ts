@@ -1,8 +1,8 @@
 // src/constants/member-data.ts
 
-export const PART_LABELS = ['FE', 'BE'] as const;
+export const PART_LABELS = ['FE', 'BE'];
 
-export const TEAM_LABELS = ['프로메사', '이어드림', '인플루이', '팝업사이클', '하니홈'] as const;
+export const TEAM_LABELS = ['프로메사', '이어드림', '인플루이', '팝업사이클', '하니홈'];
 
 export const MEMBER_DATA = {
   FE: ['김서연', '권동욱', '김영서', '이주희', '김철흥', '송아영', '신수진', '원채영', '최서연', '한서정'],
