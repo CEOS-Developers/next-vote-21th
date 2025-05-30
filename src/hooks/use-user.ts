@@ -1,12 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
 
 import { getUser } from '@/services/api/user';
+import { User } from '@/types/user';
 
-export function useUser() {
+export function useUser(): {
+  user: User | null | undefined;
+  isLoading: boolean;
+  isError: boolean;
+} {
   const {
     data: user,
     isLoading,
@@ -17,13 +20,5 @@ export function useUser() {
     staleTime: 1000 * 60, // 1 minute
   });
 
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isLoading && (!user || isError)) {
-      router.replace('/login');
-    }
-  }, [user, isLoading, isError, router]);
-
-  return { user, isLoading };
+  return { user, isLoading, isError };
 }
