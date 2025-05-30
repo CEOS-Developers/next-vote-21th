@@ -7,7 +7,7 @@
 
 ## Project Structure
 
-    TBD
+    https://pickle-alarm-35a.notion.site/7-8-1f39c22f061f801db81ef32ba493e9f0
 
 ## Usage
 
