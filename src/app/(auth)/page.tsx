@@ -8,13 +8,13 @@ import VoteIcon from '@/public/icons/vote.svg';
 
 export default function Landing() {
   const user = useAuthStore((state) => state.user);
-  const isAuth = !!user;
-  const id = user?.id || '';
+  const isLoggedIn = !!user;
+  const id = user?.id;
 
   return (
     <div className="flex h-full flex-col px-10">
       <div className="flex flex-grow">
-        {isAuth ? (
+        {isLoggedIn ? (
           <>
             <div className="relative flex-[7]">
               <p className="text-headline-01 text-grayscale-00-black absolute top-1/4 text-shadow-[4px_6px_8px_rgba(0,0,0,0.25)]">
@@ -39,7 +39,7 @@ export default function Landing() {
         )}
       </div>
       <div className="absolute inset-x-10 top-3/4">
-        {isAuth ? (
+        {isLoggedIn ? (
           <Button href="/vote/list" text="Start" />
         ) : (
           <>

@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import Back from '@/components/common/back';
 import Button from '@/components/features/auth/button';
 import InputForm from '@/components/features/auth/input-form';
+import { signup } from '@/services/api/auth';
 import { SignUpInput, signUpSchema } from '@/types/auth.dto';
 
 export default function SignUp() {
@@ -18,9 +19,8 @@ export default function SignUp() {
 
   const router = useRouter();
 
-  const onSubmit = (data: SignUpInput) => {
-    console.log(data);
-
+  const onSubmit = async (data: SignUpInput) => {
+    await signup(data);
     router.push('/login');
   };
 
