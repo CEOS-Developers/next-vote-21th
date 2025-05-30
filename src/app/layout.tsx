@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
+import QueryProvider from '@/services/query/client';
+
 import '@/styles/globals.css';
 
 const pretendard = localFont({
@@ -23,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${pretendard.className} flex min-h-screen items-center justify-center`}>
-        <div className="mobile-frame bg-neutral-01 relative">{children}</div>
+        <QueryProvider>
+          <div className="mobile-frame bg-neutral-01 relative">{children}</div>
+        </QueryProvider>
       </body>
     </html>
   );

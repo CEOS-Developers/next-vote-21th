@@ -2,12 +2,13 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
 import Back from '@/components/common/back';
 import Button from '@/components/features/auth/button';
 import InputForm from '@/components/features/auth/input-form';
-// import { useAuthStore } from '@/lib/store/use-auth-store';
+import { login } from '@/services/api/auth';
 import { LoginInput, loginSchema } from '@/types/auth.dto';
 
 export default function Login() {
@@ -18,17 +19,17 @@ export default function Login() {
   } = useForm<LoginInput>({ resolver: zodResolver(loginSchema) });
 
   const router = useRouter();
-  // const login = useAuthStore((state) => state.login);
+  const queryClient = useQueryClient();
 
-  const onSubmit = (data: LoginInput) => {
-    const dummyToken = 'fake-jwt-token';
+  const mutation = useMutation({
+    mutationFn: login,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['user'] }); // force user cache refresh
+      router.push('/');
+    },
+  });
 
-    console.log(data);
-
-    localStorage.setItem('token', dummyToken);
-    // login(data.id);
-    router.push('/');
-  };
+  const onSubmit = (data: LoginInput) => mutation.mutate(data);
 
   return (
     <div className="flex h-full flex-col px-10">
