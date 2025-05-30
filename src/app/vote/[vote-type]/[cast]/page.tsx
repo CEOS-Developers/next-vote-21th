@@ -4,7 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 
 import Back from '@/components/common/back';
 import CandidateGrid from '@/components/features/vote/candidate-grid';
-import { BE, FE, TEAMS } from '@/lib/constants/member-data';
+import { MEMBER_DATA, TEAM_LABELS } from '@/lib/constants/member-data';
 import { useVoteStore } from '@/lib/store/use-vote-store';
 
 export default function VoteStep2() {
@@ -15,9 +15,9 @@ export default function VoteStep2() {
   const type = params['cast'];
 
   const getCandidates = () => {
-    if (type === 'front') return FE;
-    if (type === 'back') return BE;
-    return TEAMS;
+    if (type === 'front') return MEMBER_DATA['FE'];
+    if (type === 'back') return MEMBER_DATA['BE'];
+    return [...TEAM_LABELS];
   };
 
   const getTitle = () => {
