@@ -3,7 +3,7 @@
 import { useParams, useRouter } from 'next/navigation';
 
 import ResultGrid from '@/components/features/vote/result-grid';
-import { BE, FE, TEAMS } from '@/lib/constants/member-data';
+import { MEMBER_DATA, TEAM_LABELS } from '@/lib/constants/member-data';
 
 export default function VoteStep3() {
   const params = useParams();
@@ -18,9 +18,9 @@ export default function VoteStep3() {
   };
 
   const getCandidates = () => {
-    if (type === 'front') return FE;
-    if (type === 'back') return BE;
-    return TEAMS;
+    if (type === 'front') return MEMBER_DATA['FE'];
+    if (type === 'back') return MEMBER_DATA['BE'];
+    return TEAM_LABELS;
   };
 
   // 임시 득표수 설정 함수 (추후 backend API로 변경경)
