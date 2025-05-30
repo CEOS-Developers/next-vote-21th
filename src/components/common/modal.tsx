@@ -2,15 +2,21 @@
 
 import { useRouter } from 'next/navigation';
 
+import { useUser } from '@/hooks/use-user';
+import { logout } from '@/services/api/auth';
+
 interface LogoutModalProps {
   onClose: () => void;
 }
 
 export default function LogoutModal({ onClose }: LogoutModalProps) {
   const router = useRouter();
+  const { user } = useUser();
 
-  const handleLogout = () => {
-    // localStorage.clear(), session 종료 등 logout
+  if (!user) return null;
+
+  const handleLogout = async () => {
+    await logout();
     router.push('/'); // 홈으로 이동
   };
 
@@ -21,7 +27,7 @@ export default function LogoutModal({ onClose }: LogoutModalProps) {
         className="bg-neutral-01 grid h-51.5 w-67 items-center border-2 p-6 shadow-md"
       >
         <div>
-          <p className="text-caption-01 mb-7 justify-self-center">Promesa FE 김서연</p>
+          <p className="text-caption-01 mb-7 justify-self-center">{`${user.team} ${user.part} ${user.name}`}</p>
           <button
             onClick={handleLogout}
             className="text-caption-01 mx-auto block h-11.5 w-38.5 rounded-full border-2 border-black px-4 py-2 transition hover:bg-gray-100"
