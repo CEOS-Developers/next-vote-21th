@@ -13,9 +13,9 @@ export default function Indicator() {
         onClick={() => setShowLogout(true)}
         className="absolute bottom-5 z-999 flex w-full cursor-pointer justify-center gap-2"
       >
-        <div className="bg-grayscale-00-black h-3 w-3 rounded-full"></div>
-        <div className="bg-grayscale-00-black h-3 w-3 rounded-full"></div>
-        <div className="bg-grayscale-00-black h-3 w-3 rounded-full"></div>
+        <div className="bg-grayscale-00-black h-3 w-3 rounded-full" />
+        <div className="bg-grayscale-00-black h-3 w-3 rounded-full" />
+        <div className="bg-grayscale-00-black h-3 w-3 rounded-full" />
       </div>
       {/* 로그아웃 모달 */}
       {showLogout && <LogoutModal onClose={() => setShowLogout(false)} />}
