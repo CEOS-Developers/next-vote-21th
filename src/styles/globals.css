@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-pretendard: var(--font-pretendard);
+
+  /* Use line-height: normal; and letter-spacing: normal; */
+  /* Headline Typography System */
+  --text-headline-01: 38px;
+  --text-headline-01--font-weight: 700;
+
+  --text-headline-02: 28px;
+  --text-headline-02--font-weight: 700;
+
+  --text-headline-03: 26px;
+  --text-headline-03--font-weight: 700;
+
+  --text-headline-04: 20px;
+  --text-headline-04--font-weight: 700;
+
+  /* Body Typography System */
+  --text-body-01: 19px;
+  --text-body-01--font-weight: 700;
+
+  --text-body-02: 16px;
+  --text-body-02--font-weight: 700;
+
+  --text-body-03: 10px;
+  --text-body-03--font-weight: 700;
+
+  /* Caption Typography System */
+  --text-caption-01: 18px;
+  --text-caption-01--font-weight: 700;
+
+  --text-caption-02: 18px;
+  --text-caption-02--font-weight: 400;
+
+  --text-caption-03: 14px;
+  --text-caption-03--font-weight: 700;
+
+  --text-caption-04: 14px;
+  --text-caption-04--font-weight: 400;
+
+  /* Grayscale Color System */
+  --color-grayscale-00-black: #000000;
+  --color-grayscale-00-black-tp: rgba(0, 0, 0, 0.4);
+  --color-grayscale-01: #979797;
+  --color-grayscale-02: #9b9b9b;
+  --color-grayscale-03: #d9d9d9;
+  --color-grayscale-04: #f5f5f5;
+  --color-grayscale-05-white: #ffffff;
+
+  /* Neutral Color System with Opacity */
+  --color-neutral-01: #eeefe9;
+  --color-neutral-01-tp: rgba(238, 239, 233, 0.7);
+  --color-neutral-02: #e1e1d7;
+  --color-neutral-02-tp: rgba(225, 225, 215, 0.33);
+
+  /* Accent Color System with Opaticy */
+  --color-accent-brown: #6b6758;
+  --color-accent-dark-tp: rgba(63, 55, 26, 0.5);
+}
+
+@layer base {
+  body {
+    background: var(--color-grayscale-05-white);
+    color: var(--color-grayscale-00-black);
+  }
+}
+
+@layer components {
+  .mobile-frame {
+    width: 100vw;
+    height: 100vh;
+    max-width: 338px;
+    max-height: 630px;
+    border-radius: 38px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
